@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<% include header.ejs %>
+<body>
+	<script type="text/javascript">
+		activeMenuId = "trangchu";
+	</script>
+	<% include headpanel.ejs %>
+	<div class="contentWrp">
+		<!-- <% include childpage/antoantiendo.ejs %> -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-2">
+					<% include childpage/hotrotructuyen.ejs %>
+				</div>
+	  			<div class="col-xs-8">
+	  				<div>
+						<% include childpage/slideanh.ejs %>
+	  				</div>
+	  				<div>
+						<% include childpage/blockcacsanphamtrangchu.ejs %>
+	  				</div>
+	  			</div>
+	  			<div class="col-xs-2">
+	  				<% include childpage/galleryanh.ejs %>
+	  			</div>
+			</div>
+		</div>
+	</div>
+	<!-- <% include childpage/galleryanh.ejs %> -->
+	
+	<% include footer.ejs %>
+</body>
+</html>

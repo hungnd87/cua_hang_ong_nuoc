@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+	<div class = "menu">
+		<a class ="menuItem" href="/">Home</a>
+		<a class ="menuItem crrLink" href="/gallery">Gallery</a> 
+		<a class ="menuItem" href="/goToUploadImagePage">Upload Image</a> 
+	</div>
+	<h1>Gallery</h1>
+	<div class="gallery-wrp">
+	<% var numb = 5; %>
+	<% for (var j=0; j < numb; j++){ %>  
+		<div class="content_wrp">
+			<% for(var i=j; i < images.length; i=i+numb){ %>
+				<div class="imageContentWrp">
+					<div class="bottom_content">
+						<img class = 'smallImage' alt="" src="/image?id=<%=images[i].id %>">
+						<div class="imageNameWrp">
+							<%=images[i].name %>				
+						</div>
+					</div>
+					<p class="derc">Nec menandri periculis et, nam te lobortis sensibus torquatos. <p>
+				</div>
+			<% } %>
+		</div>
+	<% } %>
+	</div>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		count = 0;
+		var socket = io.connect('http://localhost');
+		socket.on('news', function (data) {
+			count++;
+			var newDiv = document.getElementById('news');			
+			newDiv.style['background-color'] = 'rgb(217,66,54)';
+			newDiv.innerHTML = count;
+		});
+	</script>
+</body>
+</html>

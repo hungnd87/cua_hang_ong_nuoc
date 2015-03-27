@@ -1,0 +1,17 @@
+{
+  "name": "Gallery",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+	"json":"*",
+    "express": "3.2.6",
+    "ejs": "0.8.4",
+    "mysql":"2.0.0-alpha8",
+    "socket.io":"0.9.16",
+    "mongoose": "*",
+    "facebook-node-sdk":"*"
+  }
+}

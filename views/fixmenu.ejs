@@ -1,0 +1,35 @@
+<div class = "menu" id ="menu">
+	<ul>
+		<li>
+			<a id="trangchu" class ="menuItem" href="/">Trang chủ</a>
+		</li>
+		<li>
+			<a id="gioithieu" class ="menuItem" href="/gioithieu">Giới thiệu</a> 
+		</li>
+		<li>
+			<a id="tintuc" class ="menuItem" href="/tintuc">Tin tức</a> 
+		</li>
+		<li>
+			<a id="sanpham" class ="menuItem" href="/sanpham">Sản phẩm</a> 	
+		</li>
+		<li>
+			<a id="lienhe" class ="menuItem" href="/lienhe">Liên hệ</a> 
+			<ul>
+				<li>
+					<a>Bản đồ</a>
+				</li>
+				<li>
+					<a>Góp ý phản hồi</a>
+				</li>
+				<li>
+					<a>Điện thoại</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<script>
+ if (activeMenuId ) {
+	 $('#' + activeMenuId).addClass("crrLink")
+ } 
+</script>

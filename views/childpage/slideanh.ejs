@@ -1,0 +1,35 @@
+<script src="js/jquery.slides.js"></script>
+<link rel='stylesheet' href='stylesheets/mainslide.css' />
+<div class="slideWrp">
+	<div id="slides">
+		<img src="image/slide/cap_nuoc_PPR_Wa_vin_Ekoplastik.jpg">
+		<img src="image/slide/Cap_nuoc_PPR_Wavin_Pilsa.jpg">
+		<img src="image/slide/Thoat_nuoc_giảm_âm_Wavin_AS.png">
+		<img src="image/slide/van_giam_ap_RBM.png">
+		<img src="image/slide/thicong.jpg">
+	</div>
+</div>
+<script>
+	$(function() {
+		$('#slides').slidesjs({
+			width : 500,
+			height : 270,
+			/* 
+			 play : {
+					active : true,
+					auto : false,
+					interval : 4000,
+					swap : true
+			}, */
+			effect : {
+				slide : {
+					speed : 200
+				},
+				fade : {
+					speed : 300,
+					crossfade : true
+				}
+			}
+		});
+	});
+</script>

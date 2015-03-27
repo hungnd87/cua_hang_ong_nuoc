@@ -1,0 +1,130 @@
+<div class="galerrytrangchu row">
+	<div class="galerrytrangchuWrp " id="galerrytrangchuWrp">
+
+	</div>
+</div>
+<script>
+	SingleImage = function(url) {
+		this.url = url;
+	}
+	SingleImage.prototype = {
+		createEl : function() {
+			//
+		},
+		getHtml : function() {
+			var str = "<div class='imageWrp'><img src='" + this.url + "'></div>"
+			return str;
+		}
+	}
+	
+	VerticalGallery = function(options){
+		this.crrTop = 0;
+		this.element = options.element;
+		this.status = "";
+		this.element.css({
+			position: "relative"
+		});
+		this.wrpLength = this.element.parent().height();
+		this.length = 	0 - this.element.outerHeight();
+		console.log(this.element.offset())
+		console.log(this.element.outerHeight())
+		this.listenViewEvent();
+	}
+	
+	VerticalGallery.prototype = {
+		emit: function(event, data){
+			$(this).trigger(event, data);
+		},
+		on: function(event, handler) {
+			$(this).bind(event, handler);
+		},
+		start: function(){
+			this.isRun = true;
+		},
+		stop: function(){
+			this.isRun = false;
+		},
+		listenViewEvent: function () {
+			var self = this;
+			this.element.mouseout(function(){
+				self.start();	
+			});
+			this.element.mouseover(function(){
+				self.stop();	
+			});
+		},
+		run: function(){
+			this.isRun = true;
+			var self = this;
+			setInterval(function(){
+				if (self.isRun){
+					self.setTop(self.getNewTop())
+				}
+			}, 15);
+		},
+		setTop: function(top) {
+			this.element.css({
+				top: top + 'px'
+			});
+			this.crrTop = top;
+		},
+		getNewTop: function(){
+			if (this.crrTop < this.length) {
+				return this.wrpLength;
+			}
+			return this.crrTop - 2;
+		}
+	
+	}
+
+	var urls = [
+			"http://tscvietnam.com.vn/Uploads/image/d%E1%BB%B1%20%C3%A1n%20%C4%91%C3%A3%20thi%20c%C3%B4ng/sieu%20thi%20big%20c-hue2.JPG",
+			"http://tscvietnam.com.vn/Uploads/image/d%E1%BB%B1%20%C3%A1n%20%C4%91%C3%A3%20thi%20c%C3%B4ng/benh%20vien%20trung%20uong%20hue2(2).JPG",
+			"http://tscvietnam.com.vn/Uploads/image/d%E1%BB%B1%20%C3%A1n%20%C4%91%C3%A3%20thi%20c%C3%B4ng/Best-Western-Premier-Indochine-Palace2.JPG",
+			"http://tscvietnam.com.vn/Uploads/image/d%E1%BB%B1%20%C3%A1n%20%C4%91%C3%A3%20thi%20c%C3%B4ng/095347_17052013_khach-san-lam-kinh-9.JPG",
+			"http://tscvietnam.com.vn/Uploads/image/d%E1%BB%B1%20%C3%A1n%20%C4%91%C3%A3%20thi%20c%C3%B4ng/KS%20duc%20long%20dung%20quat.bmp",
+			"http://tscvietnam.com.vn/Uploads/image/%E1%BA%A3nh%20th%C3%A1ng%202/nqh3-600(1).jpg",
+			"http://tscvietnam.com.vn/Uploads/image/%E1%BA%A3nh%20th%C3%A1ng%202/phong%20cach%20anh3.jpg",
+			"http://tscvietnam.com.vn/Uploads/image/%E1%BA%A3nh%20th%C3%A1ng%202/eda_t1305607093_SKLd.jpg",
+			"http://tscvietnam.com.vn/Uploads/image/%E1%BA%A3nh%20th%C3%A1ng%202/westa-hadong.jpg",
+			"http://tscvietnam.com.vn/Uploads/image/%E1%BA%A3nh%20th%C3%A1ng%202/148%20HQV.jpg" ]
+
+	var length = urls.length;
+	var imageWidth = 40;
+	var imageNumnerInRow = 1;
+	var rowNumber = 0;
+	var phandu = length % imageNumnerInRow;
+	if (phandu == 0) {
+		rowNumber = length / imageNumnerInRow;
+	} else {
+		rowNumber = (length - phandu) / imageNumnerInRow + 1;
+	}
+	var htmlStr = "";
+	for ( var i = rowNumber; i >=0 ; i--) {
+
+		htmlStr = htmlStr + "<div class='imgRow row'>";
+
+		for ( var j = 0; j < imageNumnerInRow; j++) {
+
+			var urlIndex = i * imageNumnerInRow + j;
+			if (urlIndex >= length)
+				break;
+			var im = new SingleImage(urls[urlIndex]);
+			htmlStr = htmlStr + im.getHtml();
+		}
+
+		htmlStr = htmlStr + "</div>";
+	}
+	$('#galerrytrangchuWrp').html(htmlStr);
+	$(document).ready(function(){
+		
+		setTimeout(function() {
+			
+			verticalGallery = new VerticalGallery({
+				element: $('#galerrytrangchuWrp'),
+			});
+			verticalGallery.run();
+		}, 2000)
+	}, 2000);
+	
+</script>

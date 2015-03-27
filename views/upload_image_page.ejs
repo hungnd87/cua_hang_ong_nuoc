@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>upload</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class = "menu">
+		<a class ="menuItem" href="/">Home</a>
+		<a class ="menuItem" href="/gallery">Gallery</a> 
+		<a class ="menuItem crrLink" href="/goToUploadImagePage">Upload Image</a> 
+	</div>
+	<div class="left_block">
+		<h1>upload image</h1>
+	</div>
+	<div class="right_block">
+
+		<form id="saveImage" action="uploadImage"
+			enctype="multipart/form-data" method="POST">
+			<div class="fakeBtn">
+				Please click on text behide to choose image: <br>
+			</div>
+			<br>
+			<p>
+				<input id="upload" type="file" name="imageFile" />
+			</p>
+			<br /> <br>
+			<button type="submit" id="uploadButton">upload</button>
+		</form>
+	</div>
+</body>
+</html>
