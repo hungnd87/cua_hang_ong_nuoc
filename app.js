@@ -14,7 +14,7 @@ var app = express();
 
 
 // all environments
-app.set('port', process.env.PORT || 8181);
+app.set('port', process.env.PORT || 80);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -32,7 +32,7 @@ if ('development' == app.get('env')) {
 var server = http.createServer(app);
 
 config.registController(app);
-server.listen(8181);
+server.listen(80);
 
 process.on('uncaughtException', function(err) {
 	console.log('Caught exception: ' + err);
