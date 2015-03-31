@@ -60,7 +60,7 @@
 				if (self.isRun){
 					self.setTop(self.getNewTop())
 				}
-			}, 15);
+			}, 30);
 		},
 		setTop: function(top) {
 			this.element.css({
@@ -72,7 +72,7 @@
 			if (this.crrTop < this.length) {
 				return this.wrpLength;
 			}
-			return this.crrTop - 2;
+			return this.crrTop - 1;
 		}
 	
 	}
