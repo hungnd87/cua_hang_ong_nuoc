@@ -13,7 +13,7 @@ body {
 	color: #111;
 	min-width: 1300px;
 	height: 100%;
-	width: 100%;
+	width: 100%;	
 }
 
 a:HOVER {
@@ -39,7 +39,7 @@ div {
 	min-width: 640px;
 }
 .main-footer {
-	height: 100px;
+	height: 85px;
 	background-color: #428bca;
 	padding-bottom: 20px;
 	padding-top: 10px;
@@ -48,19 +48,21 @@ div {
 	width: 100%;
 }
 .fix-footer{
-	height: 25px;
-	text-align: right;	
-	width: 100%;
+	right: 0px;
+	height: 26px;
+	text-align: center;	
+	width: 255px;
 	position: fixed;
-	bottom: 0px;
+	bottom: -1px;
 	background-color: #428bca;
 	color: #fff;
 	z-index: 100;
-	opacity:0.9;
+	opacity:0.95;
 	padding: 0px 5px 0px 0px;
+	border-radius: .25em;
 }
 .fix-footer .hotline {
-	margin: 5px;
+	margin: 5px 0px;
 	color: #fff;
 }
 a.menuItem {
@@ -315,7 +317,6 @@ A:link {
 	background-color: rgb(52, 74, 184);
 }
 .galerrytrangchu{
-	padding-top: 20px;
 	height: 730px;
 	overflow: hidden;
 }
@@ -342,3 +343,10 @@ A:link {
 	-moz-filter: grayscale(0%);
 	filter: grayscale(0%);	
 }
+.scroller {position:relative;
+     margin:25px;
+     overflow:hidden;
+     width:150px;
+     height:500px;
+     border:solid black 1px;
+     }

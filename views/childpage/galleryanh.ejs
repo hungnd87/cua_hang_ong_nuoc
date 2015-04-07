@@ -1,81 +1,68 @@
-<div class="galerrytrangchu row">
-	<div class="galerrytrangchuWrp " id="galerrytrangchuWrp">
+<p style="margin-left: -16px;"> <strong>
+		CÁC CÔNG TRÌNH CAO TẦNG
+</strong></p>
+<script src="js/simpleScroll.js"></script>
+<style>
+/* Container DIV - automatically generated */
+.simply-scroll-container { 
+	position: relative;
+}
 
-	</div>
+/* Clip DIV - automatically generated */
+.simply-scroll-clip { 
+	position: relative;
+	overflow: hidden;
+}
+
+/* UL/OL/DIV - the element that simplyScroll is inited on
+Class name automatically added to element */
+.simply-scroll-list { 
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+	
+.simply-scroll-list li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+	
+.simply-scroll-list li img {
+	border: none;
+	display: block;
+}
+
+/* Custom class modifications - adds to / overrides above
+
+.simply-scroll is default base class */
+
+/* Container DIV */
+.simply-scroll { 
+	width: 180px;
+	height: 700px;
+	margin-bottom: 1em;
+}
+
+/* Clip DIV */
+.simply-scroll .simply-scroll-clip {
+	width: 200px;
+	height: 700px;
+}
+	
+/* Explicitly set height/width of each list item */	
+.simply-scroll .simply-scroll-list li {
+	float: left; /* Horizontal scroll only */
+	width: 180px;
+	height: 200px;
+}
+</style>
+<div class="galerrytrangchu row">
+	<ul  class="galerrytrangchuWrp " id="galerrytrangchuWrp"></ul>
 </div>
-<script>
-	SingleImage = function(url) {
-		this.url = url;
-	}
-	SingleImage.prototype = {
-		createEl : function() {
-			//
-		},
-		getHtml : function() {
-			var str = "<div class='imageWrp'><img src='" + this.url + "'></div>"
-			return str;
-		}
-	}
+<script type="text/javascript">
 	
-	VerticalGallery = function(options){
-		this.crrTop = 0;
-		this.element = options.element;
-		this.status = "";
-		this.element.css({
-			position: "relative"
-		});
-		this.wrpLength = this.element.parent().height();
-		this.length = 	0 - this.element.outerHeight();
-		console.log(this.element.offset())
-		console.log(this.element.outerHeight())
-		this.listenViewEvent();
-	}
-	
-	VerticalGallery.prototype = {
-		emit: function(event, data){
-			$(this).trigger(event, data);
-		},
-		on: function(event, handler) {
-			$(this).bind(event, handler);
-		},
-		start: function(){
-			this.isRun = true;
-		},
-		stop: function(){
-			this.isRun = false;
-		},
-		listenViewEvent: function () {
-			var self = this;
-			this.element.mouseout(function(){
-				self.start();	
-			});
-			this.element.mouseover(function(){
-				self.stop();	
-			});
-		},
-		run: function(){
-			this.isRun = true;
-			var self = this;
-			setInterval(function(){
-				if (self.isRun){
-					self.setTop(self.getNewTop())
-				}
-			}, 30);
-		},
-		setTop: function(top) {
-			this.element.css({
-				top: top + 'px'
-			});
-			this.crrTop = top;
-		},
-		getNewTop: function(){
-			if (this.crrTop < this.length) {
-				return this.wrpLength;
-			}
-			return this.crrTop - 1;
-		}
-	
-	}
 
 	var urls = [
 			"http://tscvietnam.com.vn/Uploads/image/d%E1%BB%B1%20%C3%A1n%20%C4%91%C3%A3%20thi%20c%C3%B4ng/sieu%20thi%20big%20c-hue2.JPG",
@@ -89,42 +76,17 @@
 			"http://tscvietnam.com.vn/Uploads/image/%E1%BA%A3nh%20th%C3%A1ng%202/westa-hadong.jpg",
 			"http://tscvietnam.com.vn/Uploads/image/%E1%BA%A3nh%20th%C3%A1ng%202/148%20HQV.jpg" ]
 
-	var length = urls.length;
-	var imageWidth = 40;
-	var imageNumnerInRow = 1;
-	var rowNumber = 0;
-	var phandu = length % imageNumnerInRow;
-	if (phandu == 0) {
-		rowNumber = length / imageNumnerInRow;
-	} else {
-		rowNumber = (length - phandu) / imageNumnerInRow + 1;
-	}
+	
 	var htmlStr = "";
-	for ( var i = rowNumber; i >=0 ; i--) {
 
-		htmlStr = htmlStr + "<div class='imgRow row'>";
+	for ( var i = 0; i < urls.length ; i++) {
 
-		for ( var j = 0; j < imageNumnerInRow; j++) {
+		htmlStr = htmlStr + '<li><img src="' + urls[i] +'" width="290" height="200"></li>';
 
-			var urlIndex = i * imageNumnerInRow + j;
-			if (urlIndex >= length)
-				break;
-			var im = new SingleImage(urls[urlIndex]);
-			htmlStr = htmlStr + im.getHtml();
-		}
-
-		htmlStr = htmlStr + "</div>";
 	}
 	$('#galerrytrangchuWrp').html(htmlStr);
-	$(document).ready(function(){
-		
-		setTimeout(function() {
-			
-			verticalGallery = new VerticalGallery({
-				element: $('#galerrytrangchuWrp'),
-			});
-			verticalGallery.run();
-		}, 2000)
-	}, 2000);
-	
+
+	$("#galerrytrangchuWrp").simplyScroll({
+		orientation: 'vertical'
+	});			
 </script>
