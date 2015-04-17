@@ -2,7 +2,7 @@
 <link rel='stylesheet' href='stylesheets/mainslide.css' />
 <div class="slideWrp">
 	<div id="slides">
-		<img src="image/slide/cap_nuoc_PPR_Wa_vin_Ekoplastik.jpg">
+		<!-- <img src="image/slide/cap_nuoc_PPR_Wa_vin_Ekoplastik.jpg">
 		<img src="image/slide/Cap_nuoc_PPR_Wavin_Pilsa.jpg">
 		<img src="image/slide/Thoat_nuoc_giảm_âm_Wavin_AS.png">
 		<img src="image/slide/van_giam_ap_RBM.png">
@@ -10,11 +10,15 @@
 		<img src="image/slide/thicong.jpg">
 		<img src="image/slide/day_cap_dien.jpg">
 		<img src="image/slide/panasonic.jpg">
-		<img src="image/slide/schneider.jpg">
+		<img src="image/slide/schneider.jpg"> -->
+		<img src="image/slide/wavin.jpg">
+		<img src="image/slide/thicong.jpg">
+		<img src="image/slide/thietbidien.jpg">
 	</div>
 </div>
 <script>
-	$(function() {
+
+	buildSlide= function () {
 		$('#slides').slidesjs({
 			width : 500,
 			height : 270,
@@ -35,5 +39,6 @@
 				}
 			}
 		});
-	});
+	};
+	buildSlide();
 </script>

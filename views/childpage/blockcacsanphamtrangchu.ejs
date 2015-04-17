@@ -1,102 +1,98 @@
 <div class="blocksanphamtrangchu">
+	<div id='productDescription' class='productDescription'> 
+
+	</div>
 	<div class="row">
 			<div class="col-xs-12 " >
 				<div class="row" >
-					<div class="sanphamava label-primary  " onclick="window.location = '/sanpham?sub=PPR_Wavin_Ekoplastik'">
+					<div class="sanphamava label-primary  " id="thi_cong" onclick="clickSanpham('thi_cong');">
 						<p>
 							<h5 class="text-center">
-								Nhà phân phối ống nhựa
-							</h5>
-							<h4 class="text-center">
-								PPR Wavin Ekoplastik
-							</h4>
-						</p>
-					</div>
-					<div class="sanphamava label-primary  " onclick="window.location = '/sanpham?sub=PPR_Wavin_Pilsa'">
-						<p>
-							<h5 class="text-center">
-								Nhà phân phối ống nhựa
-							</h5>
-							<h4 class="text-center">
-								PPR Wavin Pilsa
-							</h4>
-						</p>
-					</div>
-					<div class="sanphamava label-primary " onclick="window.location = '/sanpham?sub=Wavin_AS'">
-						<p>
-							<h5 class="text-center">
-								Nhà phân phối ống thoát giảm âm
-							</h5>
-							<h4 class="text-center">
-								Wavin AS
-							</h4>
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-4 sanphamava label-primary " onclick="window.location = '/sanpham?sub=van_giam_ap_RBM'">
-						<p>
-							<h5 class="text-center">
-								Nhà phân phối 
-							</h5>
-							<h4 class="text-center">
-								Van giảm áp RBM
-							</h4>
-						</p>
-					</div>
-					<div class="col-xs-4 sanphamava label-primary " onclick="window.location = '/sanpham?sub=Vat_tu_phu'">
-						<p>
-							<h5 class="text-center">
-								Sản xuất	
-							</h5>
-							<h4 class="text-center">
-								Vật tư phụ
-							</h4>
-						</p>
-					</div>
-					<div class="col-xs-4 sanphamava  label-primary" onclick="window.location = '/sanpham?sub=Xay_lap_co_dien'">
-						<p>
-							<h5 class="text-center">
-								Thi công	
+								Thi công 
 							</h5>
 							<h4 class="text-center">
 								Xây lắp cơ điện
 							</h4>
 						</p>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-4 sanphamava label-primary " onclick="window.location = '/sanpham?sub=van_giam_ap_RBM'">
+					<div class="sanphamava label-primary  " id="phan_phoi_wavin" onclick="clickSanpham('phan_phoi_wavin');">
 						<p>
 							<h5 class="text-center">
-								Nhà phân phối 
+								Phân phối 
 							</h5>
 							<h4 class="text-center">
-								Dây, Cáp điện
+								Ống Wavin
 							</h4>
 						</p>
 					</div>
-					<div class="col-xs-4 sanphamava label-primary " onclick="window.location = '/sanpham?sub=Day_cap_dien'">
+					<div class="sanphamava label-primary " id="day_thiet_bi_dien" onclick="clickSanpham('day_thiet_bi_dien');">
 						<p>
 							<h5 class="text-center">
-								Nhà phân phối	
+								Phân phối
 							</h5>
 							<h4 class="text-center">
-								Thiết bị điện Panasonic
-							</h4>
-						</p>
-					</div>
-					<div class="col-xs-4 sanphamava  label-primary" onclick="window.location = '/sanpham?sub=Xay_lap_co_dien'">
-						<p>
-							<h5 class="text-center">
-								Nhà phân phối	
-							</h5>
-							<h4 class="text-center">
-								Thiết bị điện Schneider
+								Dây và thiết bị điện
 							</h4>
 						</p>
 					</div>
 				</div>
+
 			</div>
 	</div>
 </div>
+<script>
+	var productList = {
+		'thi_cong': [{
+			description: 'Thi công các công trình cơ điện',
+			imageUrl: 'image/slide/thicong.jpg'
+		}],
+		'phan_phoi_wavin': [{
+			description: 'Ống cấp nước PPR Wavin Ekoplastik',
+			imageUrl: 'image/slide/cap_nuoc_PPR_Wa_vin_Ekoplastik.jpg'
+		},{
+			description: 'Ống cấp nước PPR Wavin Pilsa',
+			imageUrl: 'image/slide/Cap_nuoc_PPR_Wavin_Pilsa.jpg'
+		},{
+			description: 'Ống thoát nước giảm âm Wavin AS',
+			imageUrl: 'image/slide/Thoat_nuoc_giảm_âm_Wavin_AS.png'
+		}],
+		'day_thiet_bi_dien': [{
+			description: 'Dây, cáp điện',
+			imageUrl: 'image/slide/day_cap_dien.jpg',
+		},{
+			description: 'Thiết bị điện Panasonic',
+			imageUrl: 'image/slide/panasonic.jpg',
+		},{
+			description: 'Thiết bị điện Schneider',
+			imageUrl: 'image/slide/schneider.jpg',
+		}]
+	}
+	function clickSanpham(index){
+		var productNames = productList[index];
+		var htmlStr = "";
+		var imageSlide = "";
+		for (var i in productNames) {
+			htmlStr += '<span id="" onclick="openImage(' + "'" + productNames[i].imageUrl+ "')" + '"">' + productNames[i].description + '</span>'
+			console.log(htmlStr)
+			imageSlide += productNames[i].image;
+		}
+		$("#productDescription").html(htmlStr);
+		
+		clearCrrClass();
+		$('#' + index).addClass('current');
+	}
+
+	function clearCrrClass(){
+		for (var id in productList) {
+			$('#' +  id).removeClass('current');
+		} 
+	}
+
+	function openImage(image){
+		console.log(image)
+		$('#slide').stop();
+		$("#slides").html("<image style='width: 100%' src='" + image + "'/>")
+	}
+
+
+</script>

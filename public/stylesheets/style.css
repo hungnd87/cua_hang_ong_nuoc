@@ -266,7 +266,7 @@ A:link {
 	color: black;
 }
 .slideWrp{
-	height: 488px;
+	height: 472px;
 	width: 800px;
 }
 .contentWrp {
@@ -295,6 +295,21 @@ A:link {
 	color: white;
 	padding-left: 10px;
 }
+.blocksanphamtrangchu .productDescription{
+	color: #000;
+	height: 34px;
+	position: absolute;
+  	top: 438px;
+  	left: 116px;
+}
+.blocksanphamtrangchu .productDescription span{
+	color: #fff;
+	padding: 5px;
+	background-color: #344AB8;
+	margin-right: 10px;
+	border-radius: .25em;
+	cursor: pointer;
+}
 .blocksanphamtrangchu>.container {
 	padding:  0px 60px;
 }
@@ -307,8 +322,9 @@ A:link {
 	/* box-shadow: 10px 10px 5px #888888; */
 	width: 260px;
 	float: left;
+	cursor: pointer;
 }
-.sanphamava:HOVER{
+.sanphamava:HOVER, .sanphamava.current{
 	opacity: 1;
 	box-shadow: 4px 4px 5px #888888;
 	background-color: rgb(52, 74, 184);
