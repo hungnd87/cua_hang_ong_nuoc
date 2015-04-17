@@ -366,3 +366,7 @@ A:link {
      height:500px;
      border:solid black 1px;
      }
+.hoatdongcongty .imgWrp{
+	height: 345px;
+	overflow-y: auto;
+}
