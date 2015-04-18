@@ -92,10 +92,8 @@
 			</ul>
 		</li>
 	</ul>
-	<div class="loginWrp">
-		<input placeholder="Tên đăng nhập" type="text" name="username" id="uservame"/>
-		<input placeholder="Mật khẩu"type="text" name="password" id="password"/>
-		<button onclick="login()">Đăng nhập</button>
+	<div class="loginWrp" id='loginWrp'>
+		
 	</div>
 </div>
 <script>
@@ -103,11 +101,42 @@
 	 $('#' + activeMenuId).addClass("crrLink")
  }
  function login() {
- 	$.post('login', {
- 		userName: $('#username').val(),
- 		password: $('#password').val() 
- 	}, function(res){
- 		console.log(res)
- 	}, 'json');
+ 	$.ajax({
+		type: "POST",
+		url: 'login',
+	 	data: {
+ 			username: $('#username').val(),
+ 			password: $('#password').val()
+ 		},
+	  	success: function(res){
+	  		console.log(res);
+	  		checkLogin();
+	  	},
+	  	dataType: 'json'
+	})
  } 
+
+ function logout(){
+ 	$.get('logout', function(res){
+ 		checkLogin();
+ 	})
+ }
+ 
+ function checkLogin() {
+ 	$.get('/checkLogin', function(res){
+ 		if (res) {
+ 			$('#loginWrp').html('<span>' + res.username + '</span><span onclick="logout();">Thoát</span>');
+ 			$('#loginWrp').css({
+ 				'font-size' : '12 px',
+ 				'color': '#fff'
+ 			})
+ 		} else {
+ 			var str = '<input placeholder="Tên đăng nhập" type="text" name="username" id="username"/>' +
+				'<input placeholder="Mật khẩu"type="text" name="password" id="password"/>' +
+				'<button onclick="login()">Đăng nhập</button>' ;
+ 			$('#loginWrp').html(str)
+ 		}
+ 	})
+ }
+ checkLogin(); 
 </script>

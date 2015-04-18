@@ -1,9 +1,9 @@
 ﻿var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://125.212.202.232:27017/htmlresource';
+var url = 'mongodb://125.212.202.232:27017/tame';
 MongoClient.connect(url, function(err, db) {
   console.log(err)
   console.log("Connected correctly to server");
-  findDocuments(db, function(){
+  insertDocuments(db, function(){
   	db.close();	
   })
   
@@ -12,12 +12,13 @@ MongoClient.connect(url, function(err, db) {
 
 var insertDocuments = function(db, callback) {
   // Get the documents collection
-  var collection = db.collection('sanpham');
+  var collection = db.collection('userinfo');
   // Insert some documents
   collection.insert(
     [{
-    	type: 'ppr_wavin_ekoplastik',
-    	name: 'Nhà phân phối'
+    	username: 'hung',
+    	password: 'hung',
+      permission: 'supper_admin'
     }]
   , function(err, result) {
 	console.log(result);  
