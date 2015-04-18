@@ -48,13 +48,16 @@
 		}],
 		'phan_phoi_wavin': [{
 			description: 'Ống cấp nước PPR Wavin Ekoplastik',
-			imageUrl: 'image/slide/cap_nuoc_PPR_Wa_vin_Ekoplastik.jpg'
+			imageUrl: 'image/slide/cap_nuoc_PPR_Wa_vin_Ekoplastik.jpg',
+			pdfUrl:'pdf/ekoplastik.pdf'
 		},{
 			description: 'Ống cấp nước PPR Wavin Pilsa',
-			imageUrl: 'image/slide/Cap_nuoc_PPR_Wavin_Pilsa.jpg'
+			imageUrl: 'image/slide/Cap_nuoc_PPR_Wavin_Pilsa.jpg',
+			pdfUrl:'pdf/PilsaPPR.pdf'
 		},{
 			description: 'Ống thoát nước giảm âm Wavin AS',
-			imageUrl: 'image/slide/Thoat_nuoc_giảm_âm_Wavin_AS.png'
+			imageUrl: 'image/slide/Thoat_nuoc_giảm_âm_Wavin_AS.png',
+			pdfUrl:'pdf/WavinASProduct.pdf'
 		}],
 		'day_thiet_bi_dien': [{
 			description: 'Dây, cáp điện',
@@ -72,7 +75,7 @@
 		var htmlStr = "";
 		var imageSlide = "";
 		for (var i in productNames) {
-			htmlStr += '<span id="" onclick="openImage(' + "'" + productNames[i].imageUrl+ "')" + '"">' + productNames[i].description + '</span>'
+			htmlStr += '<span id="" onclick="openImage(' + "'" + productNames[i].imageUrl+ "','" + productNames[i].pdfUrl + "')" + '"">' + productNames[i].description + '</span>'
 			console.log(htmlStr)
 			imageSlide += productNames[i].image;
 		}
@@ -88,10 +91,16 @@
 		} 
 	}
 
-	function openImage(image){
+	function openImage(image , pdf){
 		console.log(image)
 		$('#slide').stop();
-		$("#slides").html("<image style='width: 100%' src='" + image + "'/>")
+		var htmlStr = "";
+		if (pdf) {
+			htmlStr = "<image style='width: 100%' onclick='window.open(" + '"' + pdf + '"' + ")' src='" + image + "'/>"
+		} else {
+			htmlStr = "<image style='width: 100%' src='" + image + "'/>"
+		}
+		$("#slides").html(htmlStr)
 	}
 
 

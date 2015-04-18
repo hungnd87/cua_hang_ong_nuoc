@@ -92,9 +92,22 @@
 			</ul>
 		</li>
 	</ul>
+	<div class="loginWrp">
+		<input placeholder="Tên đăng nhập" type="text" name="username" id="uservame"/>
+		<input placeholder="Mật khẩu"type="text" name="password" id="password"/>
+		<button onclick="login()">Đăng nhập</button>
+	</div>
 </div>
 <script>
  if (activeMenuId ) {
 	 $('#' + activeMenuId).addClass("crrLink")
+ }
+ function login() {
+ 	$.post('login', {
+ 		userName: $('#username').val(),
+ 		password: $('#password').val() 
+ 	}, function(res){
+ 		console.log(res)
+ 	}, 'json');
  } 
 </script>

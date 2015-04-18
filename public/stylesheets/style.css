@@ -38,6 +38,19 @@ div {
 	padding:10px 15px 0px 10px;
 	min-width: 640px;
 }
+.menu .loginWrp {
+	font-size: 10px;
+	float: right;
+}
+.menu .loginWrp button {
+	float: right;
+	margin-left: 5px;
+	background-color: #5cb85c;
+}
+.menu .loginWrp input {
+	width: 100px;
+	height: 20px;
+}
 .main-footer {
 	height: 85px;
 	background-color: #428bca;
@@ -198,6 +211,7 @@ ul {
 }
 .menu>ul {
 	height: 18px;
+	position: absolute;
 }
 .menu>ul>li {
 	float: left;

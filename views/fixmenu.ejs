@@ -27,9 +27,20 @@
 			</ul>
 		</li>
 	</ul>
+	<input type="text" name="userName" id="userName"/>
+	<input type="text" name="password" id="passWord"/>
+	<button click="login()">Đăng nhập</button>
 </div>
 <script>
  if (activeMenuId ) {
 	 $('#' + activeMenuId).addClass("crrLink")
  } 
+ function login() {
+ 	$.post('login', {
+ 		userName: $('#userName').val(),
+ 		password: $('#password').val() 
+ 	}. function(res){
+ 		console.log(res)
+ 	});
+ }
 </script>
