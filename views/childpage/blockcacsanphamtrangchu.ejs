@@ -76,7 +76,6 @@
 		var imageSlide = "";
 		for (var i in productNames) {
 			htmlStr += '<span id="" onclick="openImage(' + "'" + productNames[i].imageUrl+ "','" + productNames[i].pdfUrl + "')" + '"">' + productNames[i].description + '</span>'
-			console.log(htmlStr)
 			imageSlide += productNames[i].image;
 		}
 		$("#productDescription").html(htmlStr);
@@ -92,10 +91,9 @@
 	}
 
 	function openImage(image , pdf){
-		console.log(image)
 		$('#slide').stop();
 		var htmlStr = "";
-		if (pdf) {
+		if (pdf !== 'undefined' && pdf.length > 0) {
 			htmlStr = "<image style='width: 100%' onclick='window.open(" + '"' + pdf + '"' + ")' src='" + image + "'/>"
 		} else {
 			htmlStr = "<image style='width: 100%' src='" + image + "'/>"
