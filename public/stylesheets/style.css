@@ -251,7 +251,7 @@ A:link {
 	margin: 3px 2px 2px 0px;
 	height: 30px;
 	background-color: white;
-	border-radius: 25%;
+	border-radius: 5px;
 }
 .panelWrp {
 	/* margin-bottom:10px; */
