@@ -35,7 +35,7 @@ if ('development' == app.get('env')) {
 var server = http.createServer(app);
 
 config.registController(app);
-server.listen(8080);
+server.listen(80);
 
 process.on('uncaughtException', function(err) {
 	console.log('Caught exception: ' + err);
